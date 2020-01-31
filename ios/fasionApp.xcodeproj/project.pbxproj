@@ -43,6 +43,7 @@
 		B4B0D8675A4B4E88870CE34D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 297E28F9DF254423A4A6B578 /* Octicons.ttf */; };
 		7E06958D393D4B43BF68DD5F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86E93E4930FD41CD888248DD /* SimpleLineIcons.ttf */; };
 		B8908CA1C6CA490AA2F131FD /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15CF15F4E58347CFADD33661 /* Zocial.ttf */; };
+		D7EB4192C56B41AE885023C2 /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40E2898F75964F098C38D7C0 /* SegoeUI.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		297E28F9DF254423A4A6B578 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		86E93E4930FD41CD888248DD /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		15CF15F4E58347CFADD33661 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		40E2898F75964F098C38D7C0 /* SegoeUI.ttf */ = {isa = PBXFileReference; name = "SegoeUI.ttf"; path = "../src/assets/fonts/SegoeUI.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				297E28F9DF254423A4A6B578 /* Octicons.ttf */,
 				86E93E4930FD41CD888248DD /* SimpleLineIcons.ttf */,
 				15CF15F4E58347CFADD33661 /* Zocial.ttf */,
+				40E2898F75964F098C38D7C0 /* SegoeUI.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				B4B0D8675A4B4E88870CE34D /* Octicons.ttf in Resources */,
 				7E06958D393D4B43BF68DD5F /* SimpleLineIcons.ttf in Resources */,
 				B8908CA1C6CA490AA2F131FD /* Zocial.ttf in Resources */,
+				D7EB4192C56B41AE885023C2 /* SegoeUI.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

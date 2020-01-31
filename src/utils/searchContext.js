@@ -16,9 +16,9 @@ function SearchProvider({children}) {
  * @param NestedComponent A component which needs to be injected with our context 
  */
 function withSearchContext(NestedComponent) {
-    return () => (
+    return (props) => (
         <SearchProvider>
-            <NestedComponent />
+            <NestedComponent {...props}/>
         </SearchProvider>
     )
 }

@@ -11,7 +11,7 @@ import { getItemDetails } from '../utils/api';
 import images from '../assets/images';
 import { Spinner, NavigationBar, Title, View as ShoutemView, Caption, Subtitle, Divider, Button } from '@shoutem/ui';
 import Icon from '../components/IconWrapper';
-import ViewPager from '@react-native-community/viewpager';
+import Swiper from 'react-native-web-swiper';
 
 function DetailsScreen (props) {
     const itemId = props.navigation.getParam('itemId') || 0;
@@ -21,13 +21,24 @@ function DetailsScreen (props) {
         const { carousel, name, discountedPrice, actualPrice, ratings, review, reviewCount, description, avaialbleSize, avaialbleColor} = itemDetails;
         return (
             <View style={styles.container}>
-                <ViewPager style={styles.carousel} initialPage={0}>
+                <Swiper
+                    containerStyle={styles.carousel}
+                    controlsProps={{
+                        prevPos: false,
+                        nextPos: false,
+                        dotsPos: 'bottom-left',
+                        dotActiveStyle: {backgroundColor: '#6666ff'},
+                        dotProps: {
+                            badgeStyle: {backgroundColor: '#ffffff'}
+                        }
+                    }}
+                >
                     {carousel.map((image,index) => <Image key={index.toString()} source={images[image]} />)}
-                </ViewPager>
+                </Swiper>
                 <View style={styles.title}>
-                    <Title>{name}</Title>
+                    <Title style={{fontSize: 26}}>{name}</Title>
                     <ShoutemView styleName="horizontal">
-                        <Subtitle styleName="md-gutter-right">${discountedPrice}</Subtitle>
+                        <Title style={{color: '#6666ff'}} styleName="md-gutter-right">${discountedPrice}</Title>
                         <Caption styleName="line-through">${actualPrice}</Caption>
                     </ShoutemView>
                 </View>
@@ -36,43 +47,41 @@ function DetailsScreen (props) {
                     <ScrollView showsVerticalScrollIndicator={false}>
                         <Divider styleName="line" />
                 
-                <View style={styles.reviews}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <View style={styles.rating}>
-                            <Text style={{color: '#ffffff'}}>{ratings}</Text>
+                        <View style={styles.reviews}>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <View style={styles.rating}>
+                                    <Text style={{color: '#ffffff'}}>{ratings}</Text>
+                                </View>
+                                <Subtitle>{review}</Subtitle>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <Text style={{color: '#6666ff'}}>{reviewCount} Reviews</Text>
+                            </View>
                         </View>
-                        <Subtitle>{review}</Subtitle>
-                    </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={{color: '#6666ff'}}>{reviewCount} Reviews</Text>
-                    </View>
-                </View>
-                <Divider styleName="line" />
+                        <Divider styleName="line" />
 
-                <View style={styles.description}>
-                    <ScrollView>
-                        <Subtitle>Description</Subtitle>
-                        <Text>{description}</Text>
+                        <View style={styles.description_container}>
+                            <ScrollView>
+                                <Subtitle style={{fontSize: 18, paddingVertical: 5}}>Description</Subtitle>
+                                <Text style={styles.description_text}>{description}</Text>
+                            </ScrollView>
+                        </View>
+                        
+                        <Divider styleName="line" />
+                        <View style={styles.selection}>
+                            <Subtitle style={{color: '#6666ff'}}>Select Size</Subtitle>
+                            <Subtitle>Select Color</Subtitle>
+                        </View>
+                        <Divider styleName="line" />
+                        
+                        <View style={styles.sizes}>
+                            {avaialbleSize.map(size => (
+                                <View style={styles.sizeSelect} >
+                                    <Subtitle>{size}</Subtitle>
+                                </View>)
+                            )}
+                        </View>
                     </ScrollView>
-                </View>
-                
-                <Divider styleName="line" />
-                <View style={styles.selection}>
-                    <Subtitle style={{color: '#6666ff'}}>Select Size</Subtitle>
-                    <Subtitle>Select Color</Subtitle>
-                </View>
-                <Divider styleName="line" />
-                
-                <View style={styles.sizes}>
-                    {avaialbleSize.map(size => (
-                        <View style={styles.sizeSelect} elevation={3}>
-                            <Subtitle>{size}</Subtitle>
-                        </View>)
-                    )}
-                </View>
-
-
-                </ScrollView>
                 </View>
                 <Button styleName='full-width' style={styles.bottombtn}>
                     <Title style={{color: '#ffffff'}}>BUY NOW</Title>
@@ -114,14 +123,14 @@ const styles = StyleSheet.create({
     },
     carousel: {
         flex: 3,
-        overflow: 'hidden',
         marginHorizontal: 20,
         backgroundColor: 'transparent'
     },
     title: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginHorizontal: 20,
+        paddingVertical: 15,
         marginVertical: 5,
         backgroundColor: 'transparent'
     },
@@ -142,11 +151,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'transparent'
     },
-    description: {
+    description_container: {
         marginHorizontal: 20,
         marginVertical: 10,
         maxHeight: 170,
         backgroundColor: 'transparent'
+    },
+    description_text: {
+        lineHeight: 22,
+        letterSpacing: 1,
+        textAlign: 'justify'
     },
     selection: {
         height: 50,

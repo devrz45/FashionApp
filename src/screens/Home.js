@@ -13,6 +13,7 @@ import SearchBar from '../components/SearchBar';
 import TopDrawer from '../components/TopDrawer';
 import ItemsDrawer from '../components/ItemsDrawer';
 import Icon from '../components/IconWrapper';
+import { withSearchContext } from '../utils/searchContext';
 
 function HomeScreen(props) {
     const intialData = useFetchData(getInitialData);
@@ -36,11 +37,11 @@ function HomeScreen(props) {
             <Spinner size='large' />
         </View>
     )
-
-
 }
 
-HomeScreen.navigationOptions = {
+const connectedHomeScreen = withSearchContext(HomeScreen);
+
+connectedHomeScreen.navigationOptions = {
     header: ({ scene, previous, navigation }) => {
         return (
             <NavigationBar 
@@ -82,4 +83,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HomeScreen
+export default connectedHomeScreen;

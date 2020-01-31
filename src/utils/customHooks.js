@@ -14,8 +14,12 @@ export function useFetchData(dataFetcher) {
 
     useEffect(() => {
         /**
-         * Ideally this will be a fetch call or a function making a server request for data
-         * For our purpose it's a simple function that gets the data from a static file
+         * NOTE: @param dataFetcher could be made to return a promise to use with async await but
+         * for the sake of simplicity and keeping the mocks as easy to understand as possible
+         * a simple callback is used.
+         * Plus @hook useEffect doesn't accept async functions as input since they return a
+         * promise and not a clean-up function as expected by useEffect. We need to implement a
+         * IIFE.
          */
         dataFetcher(handleFetchData);
     },[]);
